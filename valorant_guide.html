@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT 究極のタクティカル・マスターガイド：2026年完全詳細版</title>
+    <style>
+        :root {
+            --val-red: #ff4655;
+            --val-black: #0f1923;
+            --val-dark-blue: #111e29;
+            --val-offwhite: #ece8e1;
+            --val-gray: #383e3a;
+            --val-blue: #00eeff;
+            --duel-clr: #ff4655;
+            --init-clr: #f9d501;
+            --cont-clr: #9b59b6;
+            --sent-clr: #1abc9c;
+        }
+
+        body {
+            font-family: 'DIN Next W1G', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--val-black);
+            color: var(--val-offwhite);
+            margin: 0; padding: 0; line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--val-red) 0%, #bd3944 100%);
+            padding: 80px 20px; text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        h1 { margin: 0; font-size: 3.2em; text-transform: uppercase; letter-spacing: 6px; font-weight: 900; }
+        .container { max-width: 1100px; margin: -50px auto 0; padding: 20px; }
+
+        section {
+            background-color: var(--val-dark-blue);
+            margin-bottom: 50px; padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+        }
+
+        h2 { color: var(--val-red); text-transform: uppercase; border-bottom: 2px solid var(--val-gray); padding-bottom: 15px; font-size: 2em; margin-top: 0; }
+        h3 { color: var(--val-blue); margin-top: 35px; font-size: 1.6em; border-left: 5px solid var(--val-blue); padding-left: 15px; }
+
+        .role-desc { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 4px; margin-bottom: 30px; border: 1px solid var(--val-gray); }
+        .role-desc b { color: var(--val-red); font-size: 1.1em; }
+
+        /* エージェントカード */
+        .agent-list { display: flex; flex-direction: column; gap: 40px; }
+        .agent-card {
+            background-color: #1a252e; border-top: 4px solid var(--val-gray);
+            padding: 0; display: flex; flex-wrap: wrap; overflow: hidden;
+        }
+        .agent-card.duelist { border-top-color: var(--duel-clr); }
+        .agent-card.initiator { border-top-color: var(--init-clr); }
+        .agent-card.controller { border-top-color: var(--cont-clr); }
+        .agent-card.sentinel { border-top-color: var(--sent-clr); }
+
+        .agent-img-box { width: 250px; height: 350px; background: #000; flex-shrink: 0; }
+        .agent-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .agent-content { flex: 1; padding: 30px; min-width: 300px; }
+        .agent-header { display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px; }
+        .agent-name { font-size: 2.2em; font-weight: bold; color: #fff; }
+        .role-tag { font-size: 0.8em; padding: 3px 12px; background: var(--val-gray); color: #fff; text-transform: uppercase; }
+
+        .ability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+        .ability-item { background: rgba(0,0,0,0.4); padding: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        .ability-key { font-weight: 900; color: var(--val-blue); margin-right: 5px; }
+        .ability-name { display: block; font-weight: bold; margin-bottom: 8px; color: var(--val-red); font-size: 1.1em; }
+        
+        .pro-tips { margin-top: 20px; padding: 15px; background: rgba(255,70,85,0.08); border-left: 4px solid var(--val-red); }
+
+        /* マップ */
+        .map-card { background: #1a252e; border: 1px solid var(--val-gray); margin-bottom: 30px; display: flex; flex-wrap: wrap; }
+        .map-image { width: 400px; height: 250px; background: #222; }
+        .map-image img { width: 100%; height: 100%; object-fit: cover; }
+        .map-info { padding: 25px; flex: 1; min-width: 300px; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--val-gray); }
+        th { background-color: var(--val-red); color: white; }
+
+        footer { text-align: center; padding: 60px; color: var(--val-gray); font-size: 0.8em; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>VALORANT</h1>
+    <p>MASTER STRATEGY GUIDE // SEASON 2026</p>
+</header>
+
+<div class="container">
+
+    <!-- 第1章 -->
+    <section>
+        <h2>第1章：ゲームシステムと経済</h2>
+        <p>VALORANTは5対5のタクティカルFPSで、13ラウンド先取が勝利条件です。正確な射撃とアビリティの同期が勝敗を分けます。</p>
+        
+        <h3>スパイクとタイムマネジメント</h3>
+        <p>設置には<b>4秒</b>、爆破までは<b>45秒</b>。防衛側の解除は<b>7秒</b>を要し、3.5秒でハーフ解除が可能です。</p>
+
+        <h3>クレジット獲得ルール</h3>
+        <table>
+            <tr><th>アクション</th><th>獲得量</th></tr>
+            <tr><td>勝利</td><td>3,000</td></tr>
+            <tr><td>敗北（1敗〜3連敗）</td><td>1,900 / 2,400 / 2,900</td></tr>
+            <tr><td>1キル / スパイク設置</td><td>200 / 300（全員）</td></tr>
+            <tr><td>生存ペナルティ</td><td>約1,000のみ（敗北時に設置なしで生存した場合）</td></tr>
+        </table>
+    </section>
+
+    <!-- 第2章 -->
+    <section>
+        <h2>第2章：物理と射撃技術</h2>
+        <p>移動撃ちは極めて精度が低いため、「ストッピング」が必須です。</p>
+        <h3>デッドゾーン数値</h3>
+        <ul>
+            <li><b>一般武器:</b> 最高速度の 27.5% 以下で精度回復。</li>
+            <li><b>オペレーター:</b> 最高速度の 15% 以下で精度回復。</li>
+        </ul>
+        <p>被弾時は「タギング」により移動速度が72.5%減少するため、遮蔽のない場所での交戦は致命的です。</p>
+    </section>
+
+    <!-- 第3章：ロール解説 -->
+    <section>
+        <h2>第3章：4つのロールとチーム内役割</h2>
+        <div class="role-desc">
+            <b>■ デュエリスト (Duelist)</b><br>
+            自己完結型のスキルを持ち、交戦の口火を切ってエリアへの突破口（エントリー）を開く役割です。リスクを取ってサイトへ飛び込み、味方のためのスペースを作り出すことが期待されます。
+        </div>
+        <div class="role-desc">
+            <b>■ イニシエーター (Initiator)</b><br>
+            索敵スキルで敵の配置を特定し、スタンやフラッシュで防衛網を無力化します。デュエリストが安全にエントリーするための「お膳立て」を行う情報の支配者です。
+        </div>
+        <div class="role-desc">
+            <b>■ コントローラー (Controller)</b><br>
+            スモークを用いて敵の射線を遮り、戦場のレイアウトを一時的に書き換えます。安全な移動路の確保や、敵の進入遅延に特化した視界の管理職です。
+        </div>
+        <div class="role-desc">
+            <b>■ センチネル (Sentinel)</b><br>
+            防衛拠点やチームの背後を固めるエキスパートです。罠やタレットを用いて敵の接近を自動検知・遅延させ、エリアを強固に保持します。
+        </div>
+    </section>
+
+    <!-- 第4章：エージェント図鑑 -->
+    <section>
+        <h2>第4章：全29エージェント完全詳解</h2>
+        <div class="agent-list">
+
+            <!-- デュエリスト -->
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/11c2b158d932076d3215749a34b7b4209b48ce44-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ウェイレイ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ウェイレイ (Waylay)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">サチュレイト</span>敵の移動・連射・リロードを著しく鈍化させる「妨害」を付与。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ライトスピード</span>2連続のダッシュ。初撃は上方向にも移動可能。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">リフラクト</span>ビーコンを設置。再発動で無敵状態でビーコンへ帰還。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">コンバージェント・パス</span>残像を投影し、広範囲の敵に強力な妨害デバフを付与。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> リフラクトのビーコンを安全な場所に置き、ライトスピードで突撃。妨害を与えて有利にキルを取り、即座に帰還する「ヒット＆アウェイ」を極めましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d41286dc9017bf79c0b4d907b7a260c27b0adb69-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ジェット"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ジェット (Jett)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">クラウドバースト</span>短時間の煙幕を投げる。軌道を自在に曲げられる。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">アップドラフト</span>上空へ高く飛び上がる。高台の確保に使用。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">テイルウィンド</span>移動方向へ高速ダッシュ。エントリーの主力。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ブレイドストーム</span>空中でも精度が落ちない高威力ナイフを装備。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> テイルウィンドでスモーク内に飛び込み、敵の照準をずらすのが基本。オペレーターを使い、撃った瞬間にダッシュで引く動きも非常に強力です。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/47387e354c34d51b84066bc47af3c5755b92b9c5-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="フェニックス"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">フェニックス (Phoenix)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">ブレイズ</span>視線を遮り、ダメージを与える炎の壁を作成。自身は回復。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">カーブボール</span>左右に曲がるフラッシュを投げる。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ホットハンズ</span>地面を燃やす火炎瓶。敵にはダメージ、自身には回復。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ラン・イット・バック</span>一時的な分身で突入。死んでも発動地点で復活。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> フラッシュで角をクリアしつつ、ダメージを受けたら自身の炎で回復。ウルトはリスクなしでサイトの情報を取れる最強のエントリー手段です。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/40b4b242b68afe30d21e7f95bdcacaebca46ea60-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="レイズ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">レイズ (Raze)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">ブームボット</span>敵を索敵し自走するロボット。発見時に突撃爆発。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ブラストパック</span>爆発で自身を飛ばし、高速空中移動が可能。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ペイントシェル</span>広範囲を爆破するクラスターグレネード。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ショウストッパー</span>一撃必殺のロケットランチャーを装備。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> ブラストパックを用いた空中からの奇襲が最大の武器。アビリティを惜しみなく使い、敵を強ポジションから追い出しましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/7cb513c9b3eae3286449776e85753138436d553c-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="レイナ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">レイナ (Reyna)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">リーア</span>浮遊する眼を配置。見た敵を近視状態にする。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">デバウアー</span>倒した敵からHPを急速回復。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ディスミス</span>倒した敵から力を得て、短時間無敵・透明化。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">エンプレス</span>射撃速度向上。キルごとにアビリティを自動発動。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 撃ち合い特化。1キルを起点に回復や無敵を繰り返し、1対多の状況を制します。エイムに自信がある時に真価を発揮するエージェントです。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/14145d7bf9be17afa80c04ee4fbe200076cc1769-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ネオン"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ネオン (Neon)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">ファストレーン</span>2本の電気の壁を作り出し、安全な進路を確保。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">リレーボルト</span>壁で跳ね返り、範囲をスタンさせる電気エネルギー弾。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ハイギア</span>エネルギーを消費して高速ダッシュ。スライディング可能。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">オーバードライブ</span>指先から雷光を放つ。移動中も精度が落ちない。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 圧倒的速度で敵の裏を突きます。スライディングで低い姿勢から飛び込み、敵のエイムを狂わせましょう。2026年の調整により、空中制御には注意。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/05e1a996814dd10d7179efee327d29a7be00e912-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ヨル"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ヨル (Yoru)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">フェイクアウト</span>足音のデコイ。破壊されると敵をフラッシュ。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ブラインドサイド</span>壁に反射させて炸裂させるフラッシュ。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ゲートクラッシュ</span>転送地点を送り出し、テレポートする。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ディメンショナル・ドリフト</span>仮面を被り、不可視かつ無敵で移動・索敵。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> デコイとテレポートを組み合わせた心理戦が鍵。アルティメット中は無敵で裏を取り、解除阻止や急襲を仕掛けましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card duelist">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2c35cef9c38283f8478d1e808b1c129f371e50b3-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="アイソ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">アイソ (Iso)</span><span class="role-tag">デュエリスト</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">コンティンジェンシー</span>銃弾を防ぎながら前進する破壊不能のバリア。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">アンダーカット</span>壁を貫通する脆弱デバフ弾。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ダブルタップ</span>発動中にキルを取ると、次の1発を防ぐシールドを展開。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">キルコントラクト</span>敵を異次元へ引きずり込み、タイマンの決闘を強いる。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 1対1の撃ち合いをシールドで確実に勝利に導きます。決闘（ウルト）で敵の主要メンバーを無理やり排除する動きが強力です。</div>
+                </div>
+            </div>
+
+            <!-- イニシエーター -->
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3413df9939de606a355c1f88fbfc35f0774c19c9-587x900.jpg?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="テホ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">テホ (Tejo)</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">ステルスドローン</span>不可視のドローン。敵のアビリティを抑制し位置を暴露。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">スペシャルデリバリー</span>壁に吸着する爆弾。ダメージとスタンを付与。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ガイデッドサルヴォ</span>マップで2地点を指定。誘導ミサイルで敵を追い出す。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ハルマゲドン</span>マップ上の直線ルートを焼き尽くす連続空爆。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> ドローンでのスキル抑制とミサイルによる遠隔排除が売り。敵の防衛セットアップをドローンで壊し、ミサイルで強ポジから退かしましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/08b3d8822544bd327ebed0768c8b90fcec83d1a5-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ソーヴァ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ソーヴァ (Sova)</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">オウルドローン</span>操作可能なドローン。敵をマーキングする矢を放つ。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ショックボルト</span>着弾地点で爆発しダメージを与える矢。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">リーコンボルト</span>視線が通る敵をスキャンする矢。定点撃ちが可能。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ハンターズヒューリー</span>壁を貫通する3発のエネルギー矢。超長距離対応。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 情報収集の王。主要な偵察矢の定点を覚え、安全な場所から敵を暴きましょう。ウルトは敵の設置や解除を阻止するのに最適です。</div>
+                </div>
+            </div>
+
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/e435c3378b7999a3338b408dbb5da8ba63f91150-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ブリーチ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ブリーチ (Breach)</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">アフターショック</span>壁を貫通して反対側に爆発を起こす。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">フラッシュポイント</span>壁を貫通して反対側の敵を眩ませるフラッシュ。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">フォールトライン</span>直線状の地面を揺らし、敵をスタンさせる。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ローリングサンダー</span>広範囲に衝撃波を放ち、敵をノックバック・スタン。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 地形を活かした暴力的な突破。壁の裏の敵にスキルを叩き込み、無防備な状態を味方にキルしてもらいましょう。マップ知識がそのまま強さに繋がります。</div>
+                </div>
+            </div>
+
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/37ea1466beebb54aad4f16efbad184566cb80368-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="スカイ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">スカイ (Skye)</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">リグロウス</span>味方全員を継続回復。自身は不可。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">トレイルブレイザー</span>虎を操作し索敵。噛みつくと敵をスタン。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ガイディングライト</span>操作可能な鷹フラッシュ。ブラインド成功時に通知。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">シーカー</span>3体の追跡者を放ち、敵の位置特定とスロウを付与。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 情報、妨害、回復を一人でこなす万能支援。フラッシュ成功の通知を聞き、味方のエントリータイミングを指示しましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/fe52e0efac73ec782b19a54e98a4658b03677407-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="KAY/O"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">KAY/O</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">フラグ/メント</span>地形に吸着し、複数回爆発するダメージグレネード。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">フラッシュ/ドライブ</span>2種類の投げ方が可能な強力フラッシュ。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ゼロ/ポイント</span>ナイフを投げ、範囲内の敵のスキル使用を「抑制」。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ヌル/コマンド</span>パルスで周囲のスキルを封印。自身はダウン後蘇生可能。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 「スキルを使わせない」専門家。敵のセンチネルアビリティが密集する場所にナイフを投げ、強制的に射撃戦に持ち込みましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/e7099cc13a665ed2b556d514e50984393ed49967-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="フェイド"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">フェイド (Fade)</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">プラウラー</span>敵を自動追跡し近視状態にする使い魔。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">シーズ</span>敵を特定の場所に縛り付け、聴覚遮断。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ホウント</span>敵の姿を暴き、足跡を映し出す偵察デバイス。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ナイトフォール</span>悪夢の波で敵を衰弱・聴覚遮断・追跡。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> ホウントで敵の位置を確定させ、プラウラーで追い詰めるセットプレイが強力。リテイク時にウルトを使えばサイト全体を制圧できます。</div>
+                </div>
+            </div>
+
+            <div class="agent-card initiator">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/8d88f133f735f6a9077679b1ece754e5624c728e-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ゲッコー"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ゲッコー (Gekko)</span><span class="role-tag">イニシエーター</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">モッシュピット</span>広範囲に大ダメージを与える毒液溜まり。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ウィングマン</span>索敵しつつ、スパイク設置・解除を代行。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ディジー</span>敵を自動追尾し、視界を奪う液体を吐く。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">スラッシュ</span>操作して敵を拘束。回収して再利用可能。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 「使いまわし」が強み。クリーチャーを回収して何度もスキルを使うことでリソース勝ちを狙います。ウィングマンに設置を任せ、自分は射撃に専念しましょう。</div>
+                </div>
+            </div>
+
+            <!-- コントローラー -->
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/39d3f1e45e9a416d6c7bd77cd37accaf16686061-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ミクス"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ミクス (Miks)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">M-パルス</span>モード切替でスタンか回復パルスを放つデバイス。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ハーモナイズ</span>味方とリンクしバフ付与。キルで効果延長。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ウェーブフォーム</span>即時展開のスモーク。設置速度が極めて速い。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ベースクエイク</span>音波を放ち、敵をノックバック・聴覚遮断・スロウ。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 回復もこなす新世代コントローラー。リンクを付けて味方の戦闘を支援しつつ、緊急時は即時スモークで射線を切って生存率を上げましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/51e62f3c74356a7501d06feba42ac643133257d7-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ブリムストーン"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ブリムストーン (Brimstone)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">スティムビーコン</span>味方の移動・射撃速度を上げるバフを付与。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">インセンディアリー</span>地面を燃やし、進入を阻止する火炎瓶。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">スカイスモーク</span>3つの煙幕をマップから即座に同時投下。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">オービタルストライク</span>衛星から巨大レーザー照射。解除阻止に最強。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> スモークの同時展開を活かしてラッシュを支援。空爆（Q）やレーザー（X）でスパイクの解除を妨害する「設置後戦術」を極めましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/152244f121e61ca32bdd2bea9fc5370e315664fb-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ヴァイパー"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ヴァイパー (Viper)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">スネークバイト</span>脆弱デバフを与える毒液を投下。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ポイズンクラウド</span>回収可能なスモーク。毒リソースで起動・停止。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">トキシックスクリーン</span>超長距離の毒壁。何度も起動可能。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ヴァイパーズピット</span>広大な毒霧を展開。敵は内部でHPが衰弱。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 毒のリソース管理が重要。毒の壁で広いマップを遮断し、敵の進行意欲を削ぎましょう。ウルト中の近接戦はヴァイパーが圧倒的に有利です。</div>
+                </div>
+            </div>
+
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/015a083717e9687de8a741cfceddb836775b5f9f-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="オーメン"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">オーメン (Omen)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">シュラウデッドステップ</span>短距離テレポート。高所への移動に便利。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">パラノイア</span>壁貫通の影を飛ばし、敵を聴覚遮断・近視にする。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ダークカバー</span>長距離まで飛ばせる空洞状のスモーク。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">フロム・ザ・シャドウズ</span>マップのどこへでもワープ。索敵にも使用。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> ワンウェイ（一方通行）スモークで射線を有利にし、テレポートで敵の背後を突くトリッキーな動きが魅力。パラノイアは味方と合わせて使いましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/ba51d43803082941b0274b66413b0acc972546dd-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="アストラ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">アストラ (Astra)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">グラビティウェル</span>星を起動し敵を吸い寄せる。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ノヴァパルス</span>星を起動し広範囲をスタン。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ネビュラ</span>星を起動しスモークを展開。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">コスミック・ディバイド</span>音と弾丸を完全に遮断する巨大な壁を作成。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> マップ全体を俯瞰して「星」を置く知略キャラ。味方の位置と連携し、どこからでもスタンや吸い込みで戦闘をサポートできます。</div>
+                </div>
+            </div>
+
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/1246b5c517f6c8fa660e884a7032c1c54994003e-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ハーバー"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ハーバー (Harbor)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">カスケード</span>押し寄せる水の壁。敵にスロウ。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">コーヴ</span>銃弾を防ぐ水のシールドドーム。設置解除の保護。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ハイタイド</span>自在に曲げられる水の壁を作成。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">レコニング</span>敵がいる地点に間欠泉を出し、スタンさせる。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 攻めのコントローラー。自在に曲がる壁でサイトへの道を作り、コーヴで安全にスパイクを設置しましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card controller">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9f02060077f9d61dbe89555a339e6231006d9b7b-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="クローヴ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">クローヴ (Clove)</span><span class="role-tag">コントローラー</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">ピック・ミー・アップ</span>倒した敵から生命力を奪いHP回復。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">メドル</span>崩壊デバフを付与する破片を投げる。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ルース</span>死後もマップから設置可能なスモーク。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ノット・デッド・イェット</span>デス直後に復活。一定時間内に敵を倒せば生存。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 死を恐れず戦う攻撃的スタイル。自分が倒されてもスモークで味方を助けられるため、積極的に撃ち合いに参加しましょう。</div>
+                </div>
+            </div>
+
+            <!-- センチネル -->
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/b89de74fedbb633bdbd7a4423c270957aef18514-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ヴィトー"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ヴィトー (Veto)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">クロスカット</span>デバイス間を長距離ワープ。位置転換に秀でる。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">チョークホールド</span>敵を拘束・聴覚遮断・衰弱させる凶悪な罠。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">インターセプター</span>通過する物理アビリティ（矢や爆弾）を自動撃墜。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">エボリューション</span>全デバフ無効。銃弾以外で止まらない無双状態。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 「アンチ・ユーティリティ」。敵の索敵矢やフラッシュをインターセプターで台無しにし、プランを崩壊させましょう。ウルトは防衛時の絶対的な壁になります。</div>
+                </div>
+            </div>
+
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/370e4b820670ef0bac7e685f6e8c5e64d19f1890-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="ヴァイス"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">ヴァイス (Vyse)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">レイザーバイン</span>移動で活性化するトゲの巣。ダメージとスロウ。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">シアー</span>敵が通ると背後に破壊不能な壁を出し、分断する。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">アークローズ</span>壁越し設置可能な目くらましフラッシュ花。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">スチールガーデン</span>敵のメイン武器をジャミングで使用不可にする。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 敵チームの分断が最大の任務。シアーで孤立させた敵を確実に仕留め、ウルトでライフルの火力を奪いましょう。</div>
+                </div>
+            </div>
+
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/58a180961a14beb631877921e647c233804853c1-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="セージ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">セージ (Sage)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">バリアオーブ</span>分厚い氷の壁を作成。通路を完全に封鎖。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">スローオーブ</span>氷の床を作り、敵の移動とジャンプを鈍化。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ヒーリングオーブ</span>自身や味方のHPを回復。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">リザレクション</span>死んだ味方を一人、フルHPで蘇生。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 盤面の安定化。壁（C）で敵の進行ルートを制限し、ダメージを受けた味方を回復。蘇生は数的不利を一気に覆す力があります。</div>
+                </div>
+            </div>
+
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/4a648cdbcbbeef137050deefeaf6a1369c606666-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="サイファー"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">サイファー (Cypher)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">トラップワイヤー</span>見えない罠。敵を拘束・暴露し、めまいを付与。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">サイバーケージ</span>遠隔起動の煙幕。内部の音を遮断。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">スパイカメラ</span>壁に設置して監視。追跡ダーツを放てる。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ニューラルセフト</span>死体から全生存敵の位置を2回暴露。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 情報戦の達人。カメラで敵を監視し、ワイヤーで裏取りを防止。セットアップの知識がそのまま防衛力の高さに繋がります。</div>
+                </div>
+            </div>
+
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/820d36d431fff77b1e1ece39ad6f007746bd31f6-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="キルジョイ"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">キルジョイ (Killjoy)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">ナノスワーム</span>見えない範囲爆弾。起動で焼き尽くす。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">アラームボット</span>敵に飛びつき弱体化を付与するロボット。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">タレット</span>自動で敵を撃つ。索敵と妨害に秀でる。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ロックダウン</span>広範囲の敵を拘束し、武器・移動不可にする。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 自動防衛のプロ。タレットを囮に自分は別角度から撃ちましょう。ナノスワームを用いたスパイク解除阻止は屈指の性能です。</div>
+                </div>
+            </div>
+
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/0f5b668b77499c0051201389d6ac5e7343c9727f-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="チェンバー"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">チェンバー (Chamber)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">トレードマーク</span>敵をスキャンしスロウを与える罠。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ヘッドハンター</span>専用の高精度ピストルを装備。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">ランデヴー</span>設置したアンカーの範囲内でワープ。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">ツール・ド・フォース</span>強力なスナイパーを召喚。キルでスロウ。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> 攻撃的センチネル。自前の武器でキルを量産し、ワープで安全に帰りましょう。自身を囮にするアグレッシブな防衛が武器です。</div>
+                </div>
+            </div>
+
+            <div class="agent-card sentinel">
+                <div class="agent-img-box"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/477284dfe402a85abcf6b07512bcd6f01c8fe60e-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402" alt="デッドロック"></div>
+                <div class="agent-content">
+                    <div class="agent-header"><span class="agent-name">デッドロック (Deadlock)</span><span class="role-tag">センチネル</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-item"><span class="ability-key">C</span><span class="ability-name">グラブネット</span>爆発して敵をしゃがませ、動きを制限。</div>
+                        <div class="ability-item"><span class="ability-key">Q</span><span class="ability-name">ソニックセンサー</span>音を検知して範囲内をスタン。</div>
+                        <div class="ability-item"><span class="ability-key">E</span><span class="ability-name">バリアメッシュ</span>物理的に敵を遮断する十字型のバリア。</div>
+                        <div class="ability-item"><span class="ability-key">X</span><span class="ability-name">アナイアレイション</span>敵を繭に包み引き寄せ。終点で即死。</div>
+                    </div>
+                    <div class="pro-tips"><b>上達のヒント:</b> ラッシュ阻止に特化。バリアでサイトの入り口を塞ぎ、スタン罠で敵の突破を挫きます。繭（ウルト）で敵の主要メンバーを一人確定で落とす動きも強力。</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 第5章：マップ攻略 -->
+    <section id="maps">
+        <h2>第5章：2026年 現行マップ戦略</h2>
+        
+        <div class="map-card">
+            <div class="map-image"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/9e5991edbc4ddf5e68629e856ecabcc0391c6a7b-515x515.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=515" alt="アビス"></div>
+            <div class="map-info">
+                <h3>アビス (Abyss)</h3>
+                <p><b>固有ギミック:</b> 境界のない落下死エリア。</p>
+                <p>ショートカットの細道があるが落下死リスクが高い。ノックバック系スキルが最強の武器になるマップです。ミッドの支配がローテーションを左右します。</p>
+            </div>
+        </div>
+
+        <div class="map-card">
+            <div class="map-image"><img src="CORRODE_MAP_URL" alt="コロージョン"></div>
+            <div class="map-info">
+                <h3>コロージョン (Corrode)</h3>
+                <p><b>固有ギミック:</b> 水浸しの通路。</p>
+                <p>水場を歩くと足音が響き、位置が露呈しやすい。多層構造になっており、上下の射線管理が極めて重要です。</p>
+            </div>
+        </div>
+
+        <div class="map-card">
+            <div class="map-image"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d9f3c040be38a8fc1f49f18d1221680419877c05-641x641.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=641" alt="ヘイヴン"></div>
+            <div class="map-info">
+                <h3>ヘイヴン (Haven)</h3>
+                <p><b>固有ギミック:</b> 3つの設置サイト (A, B, C)。</p>
+                <p>防衛側のリソースを分散させる攻撃側有利マップ。2026年の調整で中央窓の管理がより重要になりました。</p>
+            </div>
+        </div>
+
+        <p>その他、一方通行テレポーターの<b>バインド</b>、広大な射線の<b>ブリーズ</b>、水中都市<b>パール</b>、ロープが特徴の<b>スプリット</b>がローテーションに含まれます。</p>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 VALORANT TACTICAL HUB - BASED ON 2026 DATA ECOSYSTEM</p>
+    <p>※画像エリアにはソース資料またはお好みのリンクを挿入してご活用ください。</p>
+</footer>
+
+</body>
+</html>
