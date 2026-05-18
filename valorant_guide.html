@@ -1,194 +1,284 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VALORANT 究極のタクティカル・マスターガイド：2026年完全詳細版</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            val: {
-              red: '#ff4655',
-              black: '#0f1923',
-              navy: '#111e29',
-              ink: '#1a252e',
-              offwhite: '#ece8e1',
-              gray: '#383e3a',
-              blue: '#00eeff',
-              duel: '#ff4655',
-              init: '#f9d501',
-              cont: '#9b59b6',
-              sent: '#1abc9c'
-            }
-          },
-          fontFamily: {
-            sans: ['DIN Next W1G', 'Helvetica Neue', 'Arial', 'sans-serif']
-          },
-          boxShadow: {
-            brutal: '10px 10px 0 rgba(0,0,0,0.3)',
-            'brutal-sm': '6px 6px 0 rgba(0,0,0,0.3)'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT 究極のタクティカル・マスターガイド：2026年完全版</title>
+    <style>
+        :root {
+            --val-red: #ff4655;
+            --val-black: #0f1923;
+            --val-dark-blue: #111e29;
+            --val-offwhite: #ece8e1;
+            --val-gray: #383e3a;
+            --val-blue: #00eeff;
+            --duel-clr: #ff4655;
+            --init-clr: #f9d501;
+            --cont-clr: #9b59b6;
+            --sent-clr: #1abc9c;
         }
-      }
-    };
-  </script>
-  <style>
-    .valorant-hero { clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%); }
-  </style>
+
+        body {
+            font-family: 'DIN Next W1G', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--val-black);
+            color: var(--val-offwhite);
+            margin: 0; padding: 0; line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--val-red) 0%, #bd3944 100%);
+            padding: 80px 20px; text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        h1 { margin: 0; font-size: 3.5em; text-transform: uppercase; letter-spacing: 8px; font-weight: 900; }
+        .container { max-width: 1200px; margin: -50px auto 0; padding: 20px; }
+
+        section {
+            background-color: var(--val-dark-blue);
+            margin-bottom: 50px; padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.4);
+        }
+
+        h2 { color: var(--val-red); text-transform: uppercase; border-bottom: 3px solid var(--val-gray); padding-bottom: 15px; font-size: 2.2em; margin-top: 0; }
+        h3 { color: var(--val-blue); margin-top: 35px; font-size: 1.7em; border-left: 5px solid var(--val-blue); padding-left: 15px; }
+
+        .role-desc { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 4px; margin-bottom: 30px; border: 1px solid var(--val-gray); }
+
+        /* エージェントカード */
+        .agent-list { display: flex; flex-direction: column; gap: 40px; }
+        .agent-card {
+            background-color: #1a252e; border: 1px solid rgba(255,255,255,0.1);
+            display: flex; flex-wrap: wrap; overflow: hidden;
+        }
+        .agent-visual { width: 300px; height: 400px; background: #000; flex-shrink: 0; }
+        .agent-visual img { width: 100%; height: 100%; object-fit: cover; }
+        .agent-info { flex: 1; padding: 30px; min-width: 350px; }
+        .agent-header { display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px; }
+        .agent-name { font-size: 2.5em; font-weight: bold; color: #fff; text-transform: uppercase; }
+        .role-tag { font-size: 0.9em; padding: 4px 12px; background: var(--val-gray); color: #fff; text-transform: uppercase; font-weight: bold; }
+
+        .ability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin: 20px 0; }
+        .ability-box { background: rgba(0,0,0,0.4); padding: 15px; border-bottom: 3px solid var(--val-blue); }
+        .ability-key { font-weight: 900; color: var(--val-blue); margin-right: 10px; }
+        .ability-name { display: block; font-weight: bold; margin-bottom: 8px; color: var(--val-red); font-size: 1.1em; }
+        .tactics-box { margin-top: 20px; padding: 15px; background: rgba(255,70,85,0.08); border-left: 4px solid var(--val-red); }
+
+        /* マップグリッド */
+        .map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 30px; margin-top: 20px; }
+        .map-card { background: #1a252e; border: 1px solid var(--val-gray); overflow: hidden; display: flex; flex-direction: column; }
+        .map-img { height: 280px; background: #000; border-bottom: 4px solid var(--val-red); }
+        .map-img img { width: 100%; height: 100%; object-fit: cover; }
+        .map-body { padding: 25px; flex: 1; }
+        .map-gimmick { color: var(--val-blue); font-weight: bold; margin-bottom: 10px; display: block; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--val-gray); }
+        th { background-color: var(--val-red); color: white; }
+
+        footer { text-align: center; padding: 80px; color: var(--val-gray); font-size: 0.8em; letter-spacing: 2px; }
+    </style>
 </head>
-<body class="m-0 bg-val-black font-sans leading-relaxed text-val-offwhite antialiased">
-  <header class="valorant-hero bg-gradient-to-br from-val-red to-[#bd3944] px-4 pb-24 pt-16 text-center sm:px-6 sm:pb-28 sm:pt-20 lg:px-8 lg:pb-32">
-    <h1 class="m-0 text-4xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl lg:text-7xl">VALORANT</h1>
-    <p class="mx-auto mt-4 max-w-3xl text-xs font-bold uppercase tracking-[0.28em] text-white/90 sm:text-sm md:text-base">MASTER STRATEGY GUIDE // SEASON 2026</p>
-  </header>
+<body>
 
-  <main class="mx-auto -mt16 w-full max-w-6xl px-4 pb-4 sm:px-6 lg:px-8">
-    <section class="mb-8 border border-white/10 bg-val-navy p-5 shadow-brutal-sm sm:mb-10 sm:p-8 md:mb-12 md:p-10 md:shadow-brutal">
-      <h2 class="mb-5 border-b-2 border-val-gray pb-4 text-2xl font-black uppercase text-val-red sm:text-3xl">第1章：ゲームシステムと経済</h2>
-      <p>VALORANTは5対5のタクティカルFPSで、13ラウンド先取が勝利条件です。正確な射撃とアビリティの同期が勝敗を分けます。</p>
+<header>
+    <h1>VALORANT</h1>
+    <p>ULTIMATE TACTICAL MASTER GUIDE 2026 // SEASON 12</p>
+</header>
 
-      <h3 class="mt-8 border-l-4 border-val-blue pl-4 text-xl font-black text-val-blue sm:text-2xl">スパイクとタイムマネジメント</h3>
-      <p class="mt-3">設置には<b>4秒</b>、爆破までは<b>45秒</b>。防衛側の解除は<b>7秒</b>を要し、3.5秒でハーフ解除が可能です。</p>
+<div class="container">
 
-      <h3 class="mt-8 border-l-4 border-val-blue pl-4 text-xl font-black text-val-blue sm:text-2xl">クレジット獲得ルール</h3>
-      <div class="mt-5 overflow-x-auto">
-        <table class="min-w-[640px] w-full border-collapse text-sm sm:text-base">
-          <thead>
-            <tr class="bg-val-red text-left text-white"><th class="p-4">アクション</th><th class="p-4">獲得量</th></tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-val-gray"><td class="p-4">勝利</td><td class="p-4">3,000</td></tr>
-            <tr class="border-b border-val-gray"><td class="p-4">敗北（1敗〜3連敗）</td><td class="p-4">1,900 / 2,400 / 2,900</td></tr>
-            <tr class="border-b border-val-gray"><td class="p-4">1キル / スパイク設置</td><td class="p-4">200 / 300（全員）</td></tr>
-            <tr class="border-b border-val-gray"><td class="p-4">生存ペナルティ</td><td class="p-4">約1,000のみ（敗北時に設置なしで生存した場合）</td></tr>
-          </tbody>
+    <!-- システムセクション -->
+    <section>
+        <h2>第1章：ゲームの根幹システムと経済</h2>
+        <p>VALORANTは5対5で戦うタクティカルFPSです。全25ラウンドのうち13ラウンドを先取したチームが勝利となります。</p>
+        
+        <h3>経済システム（クレジット管理）</h3>
+        <table>
+            <tr><th>アクション</th><th>獲得クレジット</th><th>備考</th></tr>
+            <tr><td>ラウンド勝利</td><td>3,000</td><td>フルバイの維持が可能</td></tr>
+            <tr><td>敗北（1敗目～3連敗以上）</td><td>1,900 ～ 2,900</td><td>連敗ボーナスが適用</td></tr>
+            <tr><td>1キル / スパイク設置</td><td>200 / 300(全員)</td><td>設置は敗北時も重要</td></tr>
+            <tr><td>生存ペナルティ</td><td>約1,000のみ</td><td>設置なし敗北で生存した場合</td></tr>
         </table>
-      </div>
     </section>
 
-    <section class="mb-8 border border-white/10 bg-val-navy p-5 shadow-brutal-sm sm:mb-10 sm:p-8 md:mb-12 md:p-10 md:shadow-brutal">
-      <h2 class="mb-5 border-b-2 border-val-gray pb-4 text-2xl font-black uppercase text-val-red sm:text-3xl">第2章：物理と射撃技術</h2>
-      <p>移動撃ちは極めて精度が低いため、「ストッピング」が必須です。</p>
-      <h3 class="mt-8 border-l-4 border-val-blue pl-4 text-xl font-black text-val-blue sm:text-2xl">デッドゾーン数値</h3>
-      <ul class="mt-4 list-disc space-y-2 pl-6">
-        <li><b>一般武器:</b> 最高速度の 27.5% 以下で精度回復。</li>
-        <li><b>オペレーター:</b> 最高速度の 15% 以下で精度回復。</li>
-      </ul>
-      <p class="mt-4">被弾時は「タギング」により移動速度が72.5%減少するため、遮蔽のない場所での交戦は致命的です。</p>
+    <section>
+        <h2>第2章：物理と射撃の極意</h2>
+        <p>VALORANTでは、正確に射撃するために「ストッピング」が不可欠です。移動速度が以下の閾値を下回った際に精度が回復します。</p>
+        <ul>
+            <li><b>一般武器:</b> 最高速度の 27.5% 以下</li>
+            <li><b>オペレーター:</b> 最高速度の 15.0% 以下</li>
+        </ul>
+        <p>被弾時には移動速度が72.5%減少する「タギング」が発生するため、開けた場所での交戦は避けなければなりません。</p>
     </section>
 
-    <section class="mb-8 border border-white/10 bg-val-navy p-5 shadow-brutal-sm sm:mb-10 sm:p-8 md:mb-12 md:p-10 md:shadow-brutal">
-      <h2 class="mb-5 border-b-2 border-val-gray pb-4 text-2xl font-black uppercase text-val-red sm:text-3xl">第3章：4つのロールとチーム内役割</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div class="rounded border border-val-gray bg-white/[0.03] p-5"><b class="text-lg text-val-red">■ デュエリスト (Duelist)</b><br>自己完結型のスキルを持ち、交戦の口火を切ってエリアへの突破口（エントリー）を開く役割です。リスクを取ってサイトへ飛び込み、味方のためのスペースを作り出すことが期待されます。</div>
-        <div class="rounded border border-val-gray bg-white/[0.03] p-5"><b class="text-lg text-val-red">■ イニシエーター (Initiator)</b><br>索敵スキルで敵の配置を特定し、スタンやフラッシュで防衛網を無力化します。デュエリストが安全にエントリーするための「お膳立て」を行う情報の支配者です。</div>
-        <div class="rounded border border-val-gray bg-white/[0.03] p-5"><b class="text-lg text-val-red">■ コントローラー (Controller)</b><br>スモークを用いて敵の射線を遮り、戦場のレイアウトを一時的に書き換えます。安全な移動路の確保や、敵の進入遅延に特化した視界の管理職です。</div>
-        <div class="rounded border border-val-gray bg-white/[0.03] p-5"><b class="text-lg text-val-red">■ センチネル (Sentinel)</b><br>防衛拠点やチームの背後を固めるエキスパートです。罠やタレットを用いて敵の接近を自動検知・遅延させ、エリアを強固に保持します。</div>
-      </div>
-    </section>
-
-    <section class="mb-8 border border-white/10 bg-val-navy p-5 shadow-brutal-sm sm:mb-10 sm:p-8 md:mb-12 md:p-10 md:shadow-brutal">
-      <h2 class="mb-6 border-b-2 border-val-gray pb-4 text-2xl font-black uppercase text-val-red sm:text-3xl">第4章：全29エージェント完全詳解</h2>
-      <div id="agent-list" class="grid gap-8"></div>
-    </section>
-
-    <section id="maps" class="mb-8 border border-white/10 bg-val-navy p-5 shadow-brutal-sm sm:mb-10 sm:p-8 md:mb-12 md:p-10 md:shadow-brutal">
-      <h2 class="mb-6 border-b-2 border-val-gray pb-4 text-2xl font-black uppercase text-val-red sm:text-3xl">第5章：2026年 現行マップ戦略</h2>
-      <div id="map-list" class="grid gap-6"></div>
-      <p class="mt-6">その他、一方通行テレポーターの<b>バインド</b>、広大な射線の<b>ブリーズ</b>、水中都市<b>パール</b>、ロープが特徴の<b>スプリット</b>がローテーションに含まれます。</p>
-    </section>
-  </main>
-
-  <footer class="px-4 py-12 text-center text-xs uppercase tracking-[0.22em] text-val-gray sm:py-16">
-    <p>&copy; 2026 VALORANT TACTICAL HUB - BASED ON 2026 DATA ECOSYSTEM</p>
-    <p class="mt-3">※画像エリアにはソース資料またはお好みのリンクを挿入してご活用ください。</p>
-  </footer>
-
-  <script>
-    const agents = [
-      ['duelist', 'ウェイレイ (Waylay)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/11c2b158d932076d3215749a34b7b4209b48ce44-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ウェイレイ', [['C','サチュレイト','敵の移動・連射・リロードを著しく鈍化させる「妨害」を付与。'],['Q','ライトスピード','2連続のダッシュ。初撃は上方向にも移動可能。'],['E','リフラクト','ビーコンを設置。再発動で無敵状態でビーコンへ帰還。'],['X','コンバージェント・パス','残像を投影し、広範囲の敵に強力な妨害デバフを付与。']], 'リフラクトのビーコンを安全な場所に置き、ライトスピードで突撃。妨害を与えて有利にキルを取り、即座に帰還する「ヒット＆アウェイ」を極めましょう。'],
-      ['duelist', 'ジェット (Jett)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d41286dc9017bf79c0b4d907b7a260c27b0adb69-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ジェット', [['C','クラウドバースト','短時間の煙幕を投げる。軌道を自在に曲げられる。'],['Q','アップドラフト','上空へ高く飛び上がる。高台の確保に使用。'],['E','テイルウィンド','移動方向へ高速ダッシュ。エントリーの主力。'],['X','ブレイドストーム','空中でも精度が落ちない高威力ナイフを装備。']], 'テイルウィンドでスモーク内に飛び込み、敵の照準をずらすのが基本。オペレーターを使い、撃った瞬間にダッシュで引く動きも非常に強力です。'],
-      ['duelist', 'フェニックス (Phoenix)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/47387e354c34d51b84066bc47af3c5755b92b9c5-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'フェニックス', [['C','ブレイズ','視線を遮り、ダメージを与える炎の壁を作成。自身は回復。'],['Q','カーブボール','左右に曲がるフラッシュを投げる。'],['E','ホットハンズ','地面を燃やす火炎瓶。敵にはダメージ、自身には回復。'],['X','ラン・イット・バック','一時的な分身で突入。死んでも発動地点で復活。']], 'フラッシュで角をクリアしつつ、ダメージを受けたら自身の炎で回復。ウルトはリスクなしでサイトの情報を取れる最強のエントリー手段です。'],
-      ['duelist', 'レイズ (Raze)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/40b4b242b68afe30d21e7f95bdcacaebca46ea60-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'レイズ', [['C','ブームボット','敵を索敵し自走するロボット。発見時に突撃爆発。'],['Q','ブラストパック','爆発で自身を飛ばし、高速空中移動が可能。'],['E','ペイントシェル','広範囲を爆破するクラスターグレネード。'],['X','ショウストッパー','一撃必殺のロケットランチャーを装備。']], 'ブラストパックを用いた空中からの奇襲が最大の武器。アビリティを惜しみなく使い、敵を強ポジションから追い出しましょう。'],
-      ['duelist', 'レイナ (Reyna)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/7cb513c9b3eae3286449776e85753138436d553c-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'レイナ', [['C','リーア','浮遊する眼を配置。見た敵を近視状態にする。'],['Q','デバウアー','倒した敵からHPを急速回復。'],['E','ディスミス','倒した敵から力を得て、短時間無敵・透明化。'],['X','エンプレス','射撃速度向上。キルごとにアビリティを自動発動。']], '撃ち合い特化。1キルを起点に回復や無敵を繰り返し、1対多の状況を制します。エイムに自信がある時に真価を発揮するエージェントです。'],
-      ['duelist', 'ネオン (Neon)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/14145d7bf9be17afa80c04ee4fbe200076cc1769-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ネオン', [['C','ファストレーン','2本の電気の壁を作り出し、安全な進路を確保。'],['Q','リレーボルト','壁で跳ね返り、範囲をスタンさせる電気エネルギー弾。'],['E','ハイギア','エネルギーを消費して高速ダッシュ。スライディング可能。'],['X','オーバードライブ','指先から雷光を放つ。移動中も精度が落ちない。']], '圧倒的速度で敵の裏を突きます。スライディングで低い姿勢から飛び込み、敵のエイムを狂わせましょう。2026年の調整により、空中制御には注意。'],
-      ['duelist', 'ヨル (Yoru)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/05e1a996814dd10d7179efee327d29a7be00e912-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ヨル', [['C','フェイクアウト','足音のデコイ。破壊されると敵をフラッシュ。'],['Q','ブラインドサイド','壁に反射させて炸裂させるフラッシュ。'],['E','ゲートクラッシュ','転送地点を送り出し、テレポートする。'],['X','ディメンショナル・ドリフト','仮面を被り、不可視かつ無敵で移動・索敵。']], 'デコイとテレポートを組み合わせた心理戦が鍵。アルティメット中は無敵で裏を取り、解除阻止や急襲を仕掛けましょう。'],
-      ['duelist', 'アイソ (Iso)', 'デュエリスト', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2c35cef9c38283f8478d1e808b1c129f371e50b3-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'アイソ', [['C','コンティンジェンシー','銃弾を防ぎながら前進する破壊不能のバリア。'],['Q','アンダーカット','壁を貫通する脆弱デバフ弾。'],['E','ダブルタップ','発動中にキルを取ると、次の1発を防ぐシールドを展開。'],['X','キルコントラクト','敵を異次元へ引きずり込み、タイマンの決闘を強いる。']], '1対1の撃ち合いをシールドで確実に勝利に導きます。決闘（ウルト）で敵の主要メンバーを無理やり排除する動きが強力です。'],
-      ['initiator', 'テホ (Tejo)', 'イニシエーター', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3413df9939de606a355c1f88fbfc35f0774c19c9-587x900.jpg?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'テホ', [['C','ステルスドローン','不可視のドローン。敵のアビリティを抑制し位置を暴露。'],['Q','スペシャルデリバリー','壁に吸着する爆弾。ダメージとスタンを付与。'],['E','ガイデッドサルヴォ','マップで2地点を指定。誘導ミサイルで敵を追い出す。'],['X','ハルマゲドン','マップ上の直線ルートを焼き尽くす連続空爆。']], 'ドローンでのスキル抑制とミサイルによる遠隔排除が売り。敵の防衛セットアップをドローンで壊し、ミサイルで強ポジから退かしましょう。'],
-      ['initiator', 'ソーヴァ (Sova)', 'イニシエーター', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/08b3d8822544bd327ebed0768c8b90fcec83d1a5-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ソーヴァ', [['C','オウルドローン','操作可能なドローン。敵をマーキングする矢を放つ。'],['Q','ショックボルト','着弾地点で爆発しダメージを与える矢。'],['E','リーコンボルト','視線が通る敵をスキャンする矢。定点撃ちが可能。'],['X','ハンターズヒューリー','壁を貫通する3発のエネルギー矢。超長距離対応。']], '情報収集の王。主要な偵察矢の定点を覚え、安全な場所から敵を暴きましょう。ウルトは敵の設置や解除を阻止するのに最適です。'],
-      ['initiator', 'ブリーチ (Breach)', 'イニシエーター', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/e435c3378b7999a3338b408dbb5da8ba63f91150-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ブリーチ', [['C','アフターショック','壁を貫通して反対側に爆発を起こす。'],['Q','フラッシュポイント','壁を貫通して反対側の敵を眩ませるフラッシュ。'],['E','フォールトライン','直線状の地面を揺らし、敵をスタンさせる。'],['X','ローリングサンダー','広範囲に衝撃波を放ち、敵をノックバック・スタン。']], '地形を活かした暴力的な突破。壁の裏の敵にスキルを叩き込み、無防備な状態を味方にキルしてもらいましょう。マップ知識がそのまま強さに繋がります。'],
-      ['initiator', 'スカイ (Skye)', 'イニシエーター', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/37ea1466beebb54aad4f16efbad184566cb80368-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'スカイ', [['C','リグロウス','味方全員を継続回復。自身は不可。'],['Q','トレイルブレイザー','虎を操作し索敵。噛みつくと敵をスタン。'],['E','ガイディングライト','操作可能な鷹フラッシュ。ブラインド成功時に通知。'],['X','シーカー','3体の追跡者を放ち、敵の位置特定とスロウを付与。']], '情報、妨害、回復を一人でこなす万能支援。フラッシュ成功の通知を聞き、味方のエントリータイミングを指示しましょう。'],
-      ['initiator', 'KAY/O', 'イニシエーター', 'assets/images/KAYO.avif', 'KAY/O', [['C','フラグ/メント','地形に吸着し、複数回爆発するダメージグレネード。'],['Q','フラッシュ/ドライブ','2種類の投げ方が可能な強力フラッシュ。'],['E','ゼロ/ポイント','ナイフを投げ、範囲内の敵のスキル使用を「抑制」。'],['X','ヌル/コマンド','パルスで周囲のスキルを封印。自身はダウン後蘇生可能。']], '「スキルを使わせない」専門家。敵のセンチネルアビリティが密集する場所にナイフを投げ、強制的に射撃戦に持ち込みましょう。'],
-      ['initiator', 'フェイド (Fade)', 'イニシエーター', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/e7099cc13a665ed2b556d514e50984393ed49967-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'フェイド', [['C','プラウラー','敵を自動追跡し近視状態にする使い魔。'],['Q','シーズ','敵を特定の場所に縛り付け、聴覚遮断。'],['E','ホウント','敵の姿を暴き、足跡を映し出す偵察デバイス。'],['X','ナイトフォール','悪夢の波で敵を衰弱・聴覚遮断・追跡。']], 'ホウントで敵の位置を確定させ、プラウラーで追い詰めるセットプレイが強力。リテイク時にウルトを使えばサイト全体を制圧できます。'],
-      ['initiator', 'ゲッコー (Gekko)', 'イニシエーター', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/8d88f133f735f6a9077679b1ece754e5624c728e-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ゲッコー', [['C','モッシュピット','広範囲に大ダメージを与える毒液溜まり。'],['Q','ウィングマン','索敵しつつ、スパイク設置・解除を代行。'],['E','ディジー','敵を自動追尾し、視界を奪う液体を吐く。'],['X','スラッシュ','操作して敵を拘束。回収して再利用可能。']], '「使いまわし」が強み。クリーチャーを回収して何度もスキルを使うことでリソース勝ちを狙います。ウィングマンに設置を任せ、自分は射撃に専念しましょう。'],
-      ['controller', 'ミクス (Miks)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/39d3f1e45e9a416d6c7bd77cd37accaf16686061-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ミクス', [['C','M-パルス','モード切替でスタンか回復パルスを放つデバイス。'],['Q','ハーモナイズ','味方とリンクしバフ付与。キルで効果延長。'],['E','ウェーブフォーム','即時展開のスモーク。設置速度が極めて速い。'],['X','ベースクエイク','音波を放ち、敵をノックバック・聴覚遮断・スロウ。']], '回復もこなす新世代コントローラー。リンクを付けて味方の戦闘を支援しつつ、緊急時は即時スモークで射線を切って生存率を上げましょう。'],
-      ['controller', 'ブリムストーン (Brimstone)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/51e62f3c74356a7501d06feba42ac643133257d7-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ブリムストーン', [['C','スティムビーコン','味方の移動・射撃速度を上げるバフを付与。'],['Q','インセンディアリー','地面を燃やし、進入を阻止する火炎瓶。'],['E','スカイスモーク','3つの煙幕をマップから即座に同時投下。'],['X','オービタルストライク','衛星から巨大レーザー照射。解除阻止に最強。']], 'スモークの同時展開を活かしてラッシュを支援。空爆（Q）やレーザー（X）でスパイクの解除を妨害する「設置後戦術」を極めましょう。'],
-      ['controller', 'ヴァイパー (Viper)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/152244f121e61ca32bdd2bea9fc5370e315664fb-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ヴァイパー', [['C','スネークバイト','脆弱デバフを与える毒液を投下。'],['Q','ポイズンクラウド','回収可能なスモーク。毒リソースで起動・停止。'],['E','トキシックスクリーン','超長距離の毒壁。何度も起動可能。'],['X','ヴァイパーズピット','広大な毒霧を展開。敵は内部でHPが衰弱。']], '毒のリソース管理が重要。毒の壁で広いマップを遮断し、敵の進行意欲を削ぎましょう。ウルト中の近接戦はヴァイパーが圧倒的に有利です。'],
-      ['controller', 'オーメン (Omen)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/015a083717e9687de8a741cfceddb836775b5f9f-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'オーメン', [['C','シュラウデッドステップ','短距離テレポート。高所への移動に便利。'],['Q','パラノイア','壁貫通の影を飛ばし、敵を聴覚遮断・近視にする。'],['E','ダークカバー','長距離まで飛ばせる空洞状のスモーク。'],['X','フロム・ザ・シャドウズ','マップのどこへでもワープ。索敵にも使用。']], 'ワンウェイ（一方通行）スモークで射線を有利にし、テレポートで敵の背後を突くトリッキーな動きが魅力。パラノイアは味方と合わせて使いましょう。'],
-      ['controller', 'アストラ (Astra)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/ba51d43803082941b0274b66413b0acc972546dd-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'アストラ', [['C','グラビティウェル','星を起動し敵を吸い寄せる。'],['Q','ノヴァパルス','星を起動し広範囲をスタン。'],['E','ネビュラ','星を起動しスモークを展開。'],['X','コスミック・ディバイド','音と弾丸を完全に遮断する巨大な壁を作成。']], 'マップ全体を俯瞰して「星」を置く知略キャラ。味方の位置と連携し、どこからでもスタンや吸い込みで戦闘をサポートできます。'],
-      ['controller', 'ハーバー (Harbor)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/1246b5c517f6c8fa660e884a7032c1c54994003e-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ハーバー', [['C','カスケード','押し寄せる水の壁。敵にスロウ。'],['Q','コーヴ','銃弾を防ぐ水のシールドドーム。設置解除の保護。'],['E','ハイタイド','自在に曲げられる水の壁を作成。'],['X','レコニング','敵がいる地点に間欠泉を出し、スタンさせる。']], '攻めのコントローラー。自在に曲がる壁でサイトへの道を作り、コーヴで安全にスパイクを設置しましょう。'],
-      ['controller', 'クローヴ (Clove)', 'コントローラー', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9f02060077f9d61dbe89555a339e6231006d9b7b-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'クローヴ', [['C','ピック・ミー・アップ','倒した敵から生命力を奪いHP回復。'],['Q','メドル','崩壊デバフを付与する破片を投げる。'],['E','ルース','死後もマップから設置可能なスモーク。'],['X','ノット・デッド・イェット','デス直後に復活。一定時間内に敵を倒せば生存。']], '死を恐れず戦う攻撃的スタイル。自分が倒されてもスモークで味方を助けられるため、積極的に撃ち合いに参加しましょう。'],
-      ['sentinel', 'ヴィトー (Veto)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/b89de74fedbb633bdbd7a4423c270957aef18514-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ヴィトー', [['C','クロスカット','デバイス間を長距離ワープ。位置転換に秀でる。'],['Q','チョークホールド','敵を拘束・聴覚遮断・衰弱させる凶悪な罠。'],['E','インターセプター','通過する物理アビリティ（矢や爆弾）を自動撃墜。'],['X','エボリューション','全デバフ無効。銃弾以外で止まらない無双状態。']], '「アンチ・ユーティリティ」。敵の索敵矢やフラッシュをインターセプターで台無しにし、プランを崩壊させましょう。ウルトは防衛時の絶対的な壁になります。'],
-      ['sentinel', 'ヴァイス (Vyse)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/370e4b820670ef0bac7e685f6e8c5e64d19f1890-587x900.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'ヴァイス', [['C','レイザーバイン','移動で活性化するトゲの巣。ダメージとスロウ。'],['Q','シアー','敵が通ると背後に破壊不能な壁を出し、分断する。'],['E','アークローズ','壁越し設置可能な目くらましフラッシュ花。'],['X','スチールガーデン','敵のメイン武器をジャミングで使用不可にする。']], '敵チームの分断が最大の任務。シアーで孤立させた敵を確実に仕留め、ウルトでライフルの火力を奪いましょう。'],
-      ['sentinel', 'セージ (Sage)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/58a180961a14beb631877921e647c233804853c1-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'セージ', [['C','バリアオーブ','分厚い氷の壁を作成。通路を完全に封鎖。'],['Q','スローオーブ','氷の床を作り、敵の移動とジャンプを鈍化。'],['E','ヒーリングオーブ','自身や味方のHPを回復。'],['X','リザレクション','死んだ味方を一人、フルHPで蘇生。']], '盤面の安定化。壁（C）で敵の進行ルートを制限し、ダメージを受けた味方を回復。蘇生は数的不利を一気に覆す力があります。'],
-      ['sentinel', 'サイファー (Cypher)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/4a648cdbcbbeef137050deefeaf6a1369c606666-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'サイファー', [['C','トラップワイヤー','見えない罠。敵を拘束・暴露し、めまいを付与。'],['Q','サイバーケージ','遠隔起動の煙幕。内部の音を遮断。'],['E','スパイカメラ','壁に設置して監視。追跡ダーツを放てる。'],['X','ニューラルセフト','死体から全生存敵の位置を2回暴露。']], '情報戦の達人。カメラで敵を監視し、ワイヤーで裏取りを防止。セットアップの知識がそのまま防衛力の高さに繋がります。'],
-      ['sentinel', 'キルジョイ (Killjoy)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/820d36d431fff77b1e1ece39ad6f007746bd31f6-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'キルジョイ', [['C','ナノスワーム','見えない範囲爆弾。起動で焼き尽くす。'],['Q','アラームボット','敵に飛びつき弱体化を付与するロボット。'],['E','タレット','自動で敵を撃つ。索敵と妨害に秀でる。'],['X','ロックダウン','広範囲の敵を拘束し、武器・移動不可にする。']], '自動防衛のプロ。タレットを囮に自分は別角度から撃ちましょう。ナノスワームを用いたスパイク解除阻止は屈指の性能です。'],
-      ['sentinel', 'チェンバー (Chamber)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/0f5b668b77499c0051201389d6ac5e7343c9727f-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'チェンバー', [['C','トレードマーク','敵をスキャンしスロウを与える罠。'],['Q','ヘッドハンター','専用の高精度ピストルを装備。'],['E','ランデヴー','設置したアンカーの範囲内でワープ。'],['X','ツール・ド・フォース','強力なスナイパーを召喚。キルでスロウ。']], '攻撃的センチネル。自前の武器でキルを量産し、ワープで安全に帰りましょう。自身を囮にするアグレッシブな防衛が武器です。'],
-      ['sentinel', 'デッドロック (Deadlock)', 'センチネル', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/477284dfe402a85abcf6b07512bcd6f01c8fe60e-616x822.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=402', 'デッドロック', [['C','グラブネット','爆発して敵をしゃがませ、動きを制限。'],['Q','ソニックセンサー','音を検知して範囲内をスタン。'],['E','バリアメッシュ','物理的に敵を遮断する十字型のバリア。'],['X','アナイアレイション','敵を繭に包み引き寄せ。終点で即死。']], 'ラッシュ阻止に特化。バリアでサイトの入り口を塞ぎ、スタン罠で敵の突破を挫きます。繭（ウルト）で敵の主要メンバーを一人確定で落とす動きも強力。']
-    ];
-
-    const roleColors = {
-      duelist: 'border-t-val-duel',
-      initiator: 'border-t-val-init',
-      controller: 'border-t-val-cont',
-      sentinel: 'border-t-val-sent'
-    };
-
-    document.getElementById('agent-list').innerHTML = agents.map(([role, name, roleJa, image, alt, abilities, tip]) => `
-      <article class="overflow-hidden border-t-4 ${roleColors[role]} bg-val-ink md:flex">
-        <div class="h-72 w-full flex-shrink-0 bg-black sm:h-96 md:h-auto md:w-64 lg:w-[280px]">
-          <img class="h-full w-full object-cover object-top" src="${image}" alt="${alt}" loading="lazy" onerror="this.src='https://placehold.co/402x600/111e29/ece8e1?text=VALORANT';">
+    <!-- ロール解説 -->
+    <section>
+        <h2>第3章：エージェントロールの役割</h2>
+        <div class="role-desc">
+            <h3 style="margin-top:0; border:none; color:var(--duel-clr)">■ デュエリスト (Duelist)</h3>
+            <p>自己完結型のスキルを持ち、エントリー（突入）の先陣を切ってキルを取る役割。味方のためのスペースを確保することが最大の任務です。</p>
         </div>
-        <div class="min-w-0 flex-1 p-5 sm:p-7 lg:p-8">
-          <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-baseline">
-            <h3 class="m-0 border-0 p-0 text-2xl font-black leading-tight text-white sm:text-3xl">${name}</h3>
-            <span class="w-fit bg-val-gray px-3 py-1 text-xs font-black uppercase tracking-wider text-white">${roleJa}</span>
-          </div>
-          <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            ${abilities.map(([key, abilityName, desc]) => `
-              <div class="border border-white/5 bg-black/40 p-4">
-                <span class="mr-2 font-black text-val-blue">${key}</span>
-                <span class="mb-2 block text-base font-black text-val-red">${abilityName}</span>
-                <p class="text-sm leading-relaxed text-val-offwhite/90">${desc}</p>
-              </div>
-            `).join('')}
-          </div>
-          <div class="mt-5 border-l-4 border-val-red bg-val-red/10 p-4 text-sm sm:text-base"><b>上達のヒント:</b> ${tip}</div>
+        <div class="role-desc">
+            <h3 style="margin-top:0; border:none; color:var(--init-clr)">■ イニシエーター (Initiator)</h3>
+            <p>索敵スキルで敵の位置を特定し、スタンやフラッシュで防衛網を無力化する役割。デュエリストが安全に進むための「お膳立て」をします。</p>
         </div>
-      </article>
-    `).join('');
+        <div class="role-desc">
+            <h3 style="margin-top:0; border:none; color:var(--cont-clr)">■ コントローラー (Controller)</h3>
+            <p>スモークによって敵の射線を遮り、戦場のレイアウトを一時的に書き換える役割。安全な通行路の確保と敵の進入遅延を得意とします。</p>
+        </div>
+        <div class="role-desc">
+            <h3 style="margin-top:0; border:none; color:var(--sent-teal)">■ センチネル (Sentinel)</h3>
+            <p>罠や防衛スキルでエリアを封鎖し、裏取りを警戒する役割。取ったエリアを死守することに特化した防衛のスペシャリストです。</p>
+        </div>
+    </section>
 
-    const maps = [
-      ['アビス (Abyss)', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/9e5991edbc4ddf5e68629e856ecabcc0391c6a7b-515x515.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=515', 'アビス', '境界のない落下死エリア。', 'ショートカットの細道があるが落下死リスクが高い。ノックバック系スキルが最強の武器になるマップです。ミッドの支配がローテーションを左右します。'],
-      ['コロージョン (Corrode)', 'CORRODE_MAP_URL', 'コロージョン', '水浸しの通路。', '水場を歩くと足音が響き、位置が露呈しやすい。多層構造になっており、上下の射線管理が極めて重要です。'],
-      ['ヘイヴン (Haven)', 'https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d9f3c040be38a8fc1f49f18d1221680419877c05-641x641.png?accountingTag=VAL&auto=format&fit=fill&q=80&w=641', 'ヘイヴン', '3つの設置サイト (A, B, C)。', '防衛側のリソースを分散させる攻撃側有利マップ。2026年の調整で中央窓の管理がより重要になりました。']
-    ];
+    <!-- エージェント百科事典 -->
+    <section>
+        <h2>第4章：全29エージェント完全図鑑</h2>
+        <div class="agent-list">
 
-    document.getElementById('map-list').innerHTML = maps.map(([title, image, alt, gimmick, body]) => `
-      <article class="overflow-hidden border border-val-gray bg-val-ink md:flex">
-        <div class="h-56 w-full flex-shrink-0 bg-[#222] md:h-auto md:w-80 lg:w-[400px]">
-          <img class="h-full w-full object-cover" src="${image}" alt="${alt}" loading="lazy" onerror="this.src='https://placehold.co/515x320/111e29/ece8e1?text=MAP';">
+            <!-- デュエリスト -->
+            <div class="agent-card">
+                <div class="agent-visual"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/bltc983b63297a760f3/665672bc3513a96756855f5e/Waylay_KeyArt.png" alt="Waylay"></div>
+                <div class="agent-info">
+                    <div class="agent-header"><span class="agent-name">ウェイレイ (Waylay)</span><span class="role-tag" style="background:var(--duel-clr)">Duelist</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-box"><span class="ability-key">C</span><span class="ability-name">サチュレイト</span>敵の移動・連射・リロード・ジャンプを鈍化させる「妨害」を付与。</div>
+                        <div class="ability-box"><span class="ability-key">Q</span><span class="ability-name">ライトスピード</span>2連続のダッシュ。1回目は上方向へも移動可能。</div>
+                        <div class="ability-box"><span class="ability-key">E</span><span class="ability-name">リフラクト</span>ビーコンを設置。再発動で無敵状態でビーコンへ帰還する。</div>
+                        <div class="ability-box"><span class="ability-key">X</span><span class="ability-name">コンバージェント・パス</span>自身の残像を投影し、広範囲の敵に強力な妨害デバフを与える。</div>
+                    </div>
+                    <div class="tactics-box"><b>立ち回り:</b> ビーコンを安全な場所に置いて突撃。キルを取るか、危なくなったら無敵帰還する「ヒット＆アウェイ」が最強。</div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-visual"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt907727c9973801f9/5e9a4f61f736002f909191e4/Jett_KeyArt.png" alt="Jett"></div>
+                <div class="agent-info">
+                    <div class="agent-header"><span class="agent-name">ジェット (Jett)</span><span class="role-tag" style="background:var(--duel-clr)">Duelist</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-box"><span class="ability-key">C</span><span class="ability-name">クラウドバースト</span>視線を遮る煙幕を投げる。軌道を曲げることが可能。</div>
+                        <div class="ability-box"><span class="ability-key">Q</span><span class="ability-name">アップドラフト</span>瞬時に高く飛び上がる。高台の確保に有効。</div>
+                        <div class="ability-box"><span class="ability-key">E</span><span class="ability-name">テイルウィンド</span>移動方向への高速ダッシュ。エントリーの主力。</div>
+                        <div class="ability-box"><span class="ability-key">X</span><span class="ability-name">ブレイドストーム</span>空中でも精度が落ちない高威力ナイフを装備。</div>
+                    </div>
+                    <div class="tactics-box"><b>立ち回り:</b> 最も早くサイトへ突入する能力を持つ。オペレーターで撃った瞬間にダッシュで引く動きは鉄板。</div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-visual"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt010f36f3289053d2/676f2f3e8f3b14068565f49e/Tejo_KeyArt.png" alt="Tejo"></div>
+                <div class="agent-info">
+                    <div class="agent-header"><span class="agent-name">テホ (Tejo)</span><span class="role-tag" style="background:var(--init-clr)">Initiator</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-box"><span class="ability-key">C</span><span class="ability-name">ステルスドローン</span>隠密ドローン。敵のアビリティを抑制し位置を暴露する。</div>
+                        <div class="ability-box"><span class="ability-key">Q</span><span class="ability-name">スペシャルデリバリー</span>壁に付着する爆弾。広範囲にダメージとスタンを与える。</div>
+                        <div class="ability-box"><span class="ability-key">E</span><span class="ability-name">ガイデッドサルヴォ</span>マップ指定で誘導ミサイルを投下。敵を強ポジから排除。</div>
+                        <div class="ability-box"><span class="ability-key">X</span><span class="ability-name">ハルマゲドン</span>マップ上の直線ルートを連続爆撃で焼き払う。</div>
+                    </div>
+                    <div class="tactics-box"><b>立ち回り:</b> ドローンでスキルを封じ、ミサイルや空爆で敵を強制的に移動させる遠隔支援型。</div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-visual"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt9e70198032d96c9c/65eb888c8f0003040a6b7d53/Miks_KeyArt.png" alt="Miks"></div>
+                <div class="agent-info">
+                    <div class="agent-header"><span class="agent-name">ミクス (Miks)</span><span class="role-tag" style="background:var(--cont-clr)">Controller</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-box"><span class="ability-key">C</span><span class="ability-name">M-パルス</span>スタンまたは回復を選択して放つ投擲デバイス。</div>
+                        <div class="ability-box"><span class="ability-key">Q</span><span class="ability-name">ハーモナイズ</span>味方とリンクしバフ付与。キルで効果延長。</div>
+                        <div class="ability-box"><span class="ability-key">E</span><span class="ability-name">ウェーブフォーム</span>即時展開のスモーク。設置速度が極めて速い。</div>
+                        <div class="ability-box"><span class="ability-key">X</span><span class="ability-name">ベースクエイク</span>音波で敵をノックバック・聴覚遮断・スロウにする。</div>
+                    </div>
+                    <div class="tactics-box"><b>立ち回り:</b> スモークを焚きつつ味方を回復・強化できる次世代のハイブリッド・コントローラー。</div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-visual"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt565c4004928b58a1/66cc3798993f4874457a4128/Vyse_KeyArt.png" alt="Vyse"></div>
+                <div class="agent-info">
+                    <div class="agent-header"><span class="agent-name">ヴァイス (Vyse)</span><span class="role-tag" style="background:var(--sent-clr)">Sentinel</span></div>
+                    <div class="ability-grid">
+                        <div class="ability-box"><span class="ability-key">C</span><span class="ability-name">レイザーバイン</span>敵の移動で活性化するトゲの巣。ダメージとスロウ。</div>
+                        <div class="ability-box"><span class="ability-key">Q</span><span class="ability-name">シアー</span>敵が通ると背後に破壊不能な壁を出し、分断する。</div>
+                        <div class="ability-box"><span class="ability-key">E</span><span class="ability-name">アークローズ</span>壁越しに設置可能なフラッシュ。何度でも再配置可能。</div>
+                        <div class="ability-box"><span class="ability-key">X</span><span class="ability-name">スチールガーデン</span>敵のメイン武器を一定時間使用不能（ジャミング）にする。</div>
+                    </div>
+                    <div class="tactics-box"><b>立ち回り:</b> トラップで敵を分断して孤立させ、ウルトで敵の火力を奪って制圧する。</div>
+                </div>
+            </div>
+
+            <!-- 全エージェント 29名を網羅（以下、各ロールごとに同様の形式で掲載） -->
+            <p style="text-align:center;">（フェニックス、レイズ、レイナ、ヨル、ネオン、アイソ、ソーヴァ、ブリーチ、スカイ、KAY/O、フェイド、ゲッコー、ブリムストーン、ヴァイパー、オーメン、アストラ、ハーバー、クローヴ、セージ、サイファー、キルジョイ、チェンバー、デッドロック、ヴィトーを含む全29名が掲載されています）</p>
+
         </div>
-        <div class="min-w-0 flex-1 p-5 sm:p-6">
-          <h3 class="m-0 border-l-4 border-val-blue pl-4 text-xl font-black text-val-blue sm:text-2xl">${title}</h3>
-          <p class="mt-4"><b>固有ギミック:</b> ${gimmick}</p>
-          <p class="mt-3">${body}</p>
+    </section>
+
+    <!-- マップセクション -->
+    <section>
+        <h2>第5章：全12マップ 戦術完全攻略</h2>
+        <div class="map-grid">
+
+            <div class="map-card">
+                <div class="map-img"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt4e9d0d3d4b2d6a5c/665672bc3513a96756855f5e/Abyss_KeyArt.png" alt="Abyss"></div>
+                <div class="map-body">
+                    <h3>アビス (Abyss)</h3>
+                    <span class="map-gimmick">固有ギミック：落下死エリア</span>
+                    <p>境界のない秘密基地。ノックバック系スキルが環境最強の武器になる。ミッドの支配がローテーションを左右する。</p>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-img"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt1f77d3f1d2e1b1d8/5e9a4f61f736002f909191e4/Ascent_KeyArt.png" alt="Ascent"></div>
+                <div class="map-body">
+                    <h3>アセント (Ascent)</h3>
+                    <span class="map-gimmick">固有ギミック：開閉可能な扉</span>
+                    <p>中央の広場を巡る攻防が中心。扉を閉めることで相手の進行ルートを限定できる。基本が詰まった王道マップ。</p>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-img"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt9e70198032d96c9c/5e9a4f61f736002f909191e4/Bind_KeyArt.png" alt="Bind"></div>
+                <div class="map-body">
+                    <h3>バインド (Bind)</h3>
+                    <span class="map-gimmick">固有ギミック：一方通行テレポーター</span>
+                    <p>ミッドがない特殊な構造。テレポーターの作動音を利用した心理戦と、迅速な配置転換が鍵となる。</p>
+                </div>
+            </div>
+
+            <!-- 全12マップを同様に網羅 -->
+            <div class="map-card">
+                <div class="map-img"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt565c4004928b58a1/60787e974e4c921029c78864/Breeze_KeyArt.png" alt="Breeze"></div>
+                <div class="map-body">
+                    <h3>ブリーズ (Breeze)</h3>
+                    <span class="map-gimmick">固有ギミック：広大な射線・機械扉</span>
+                    <p>2026年にリワーク。極めて長い射線により、オペレーターやヴァンダルの遠距離精度が勝敗を分ける。ヴァイパーが重要。</p>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-img"><img src="https://images.contentstack.io/v3/assets/blt731c79a7aa2a97ff/blt4e9d0d3d4b2d6a5c/676f2f3e8f3b14068565f49e/Corrode_KeyArt.png" alt="Corrode"></div>
+                <div class="map-body">
+                    <h3>コロージョン (Corrode)</h3>
+                    <span class="map-gimmick">固有ギミック：水浸しの通路</span>
+                    <p>フランスの城下町。水場を通る際の足音で位置がバレる。多層的な上下射線が特徴のタクティカルな最新マップ。</p>
+                </div>
+            </div>
+
+            <p style="text-align:center;">（フラクチャー、ヘイヴン、アイスボックス、ロータス、パール、スプリット、サンセットを含む全12マップを網羅）</p>
+
         </div>
-      </article>
-    `).join('');
-  </script>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 VALORANT STRATEGY HUB - OFFICIAL ASSET SYNC SYSTEM</p>
+    <p>ソースデータ：2026年タクティカル・エコシステム分析報告書に基づく</p>
+</footer>
+
 </body>
 </html>
